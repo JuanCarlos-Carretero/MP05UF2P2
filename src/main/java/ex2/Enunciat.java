@@ -6,7 +6,7 @@ public class Enunciat {
        "get" , "drop" , "count" i "size". Dins els jocs de proves pots fer servir el mètode "toString" que proporciona
        la taula de hash per a obtenir una cadena de text que representa el seu contingut.
 
-    2. Mira al final d'aquest document, trobaràs un llistat de tot el que cal provar per trobar els errors que té el
+    2. Mira al final d'aquest document, trobaràs un llistat de tot el que cal provar per trobar els errors que té
        el codi font. Dins un mateix joc de proves, pots fer servir combinacions de mètodes (per exemple "put" i "get").
 
     3. SOLUCIONA els errors que hi trobis però NO ESBORRIS CODI, tan sols comenta'l perquè es pugui veure el
