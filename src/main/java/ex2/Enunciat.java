@@ -146,13 +146,13 @@ public class Enunciat {
         S'ha de fer servir el mètode "get" per a comprovar que la taula retorna els elements correctes.
 
         S'ha de fer servir el mètode "put" generar les següents situacions:
-            Obtenir un element que no col·lisiona dins una taula vuida.
-            Obtenir un element que col·lisiona dins una taula (1a posició dins el mateix bucket).
-            Obtenir un element que col·lisiona dins una taula (2a posició dins el mateix bucket).
-            Obtenir un element que col·lisiona dins una taula (3a posició dins el mateix bucket).
-            Obtenir un elements que no existeix perquè la seva posició està buida.
-            Obtenir un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
-            Obtenir un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
+            8. Obtenir un element que no col·lisiona dins una taula vuida.
+            9. Obtenir un element que col·lisiona dins una taula (1a posició dins el mateix bucket).
+            10. Obtenir un element que col·lisiona dins una taula (2a posició dins el mateix bucket).
+            11. Obtenir un element que col·lisiona dins una taula (3a posició dins el mateix bucket).
+            12. Obtenir un elements que no existeix perquè la seva posició està buida.
+            13. Obtenir un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
+            14. Obtenir un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
 
      Drop:
         S'ha de fer servir el mètode "toString" per a comprovar que la taula conté els elements correctes després de
@@ -162,21 +162,21 @@ public class Enunciat {
         tal i com s'ha fet a les proves anteriors.
 
         S'ha de fer servir el mètode "drop" generar les següents situacions:
-            Esborrar un element que no col·lisiona dins una taula.
-            Esborrar un element que si col·lisiona dins una taula (1a posició dins el mateix bucket).
-            Esborrar un element que si col·lisiona dins una taula (2a posició dins el mateix bucket).
-            Esborrar un element que si col·lisiona dins una taula (3a posició dins el mateix bucket).
-            Eliminar un elements que no existeix perquè la seva posició està buida.
-            Eliminar un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
-            Eliminar un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
+            15. Esborrar un element que no col·lisiona dins una taula.
+            16. Esborrar un element que si col·lisiona dins una taula (1a posició dins el mateix bucket).
+            17. Esborrar un element que si col·lisiona dins una taula (2a posició dins el mateix bucket).
+            18. Esborrar un element que si col·lisiona dins una taula (3a posició dins el mateix bucket).
+            19. Eliminar un elements que no existeix perquè la seva posició està buida.
+            20. Eliminar un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
+            21. Eliminar un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
 
       Count:
-        S'ha de repetir tot el que s'ha fet amb "put" i comprovar amb "count" que el número de nodes és correcte.
-        S'ha de repetir tot el que s'ha fet amb "drop" i comprovar amb "count" que el número de nodes és correcte.
+        22. S'ha de repetir tot el que s'ha fet amb "put" i comprovar amb "count" que el número de nodes és correcte.
+        23. S'ha de repetir tot el que s'ha fet amb "drop" i comprovar amb "count" que el número de nodes és correcte.
 
       Size:
-        S'ha de repetir tot el que s'ha fet amb "put" i comprovar amb "size" que el tamany de la taula és correcte.
-        S'ha de repetir tot el que s'ha fet amb "drop" i comprovar amb "size" que el tamany de la taula és correcte.
+        24. S'ha de repetir tot el que s'ha fet amb "put" i comprovar amb "size" que el tamany de la taula és correcte.
+        25. S'ha de repetir tot el que s'ha fet amb "drop" i comprovar amb "size" que el tamany de la taula és correcte.
 
 */
 }

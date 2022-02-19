@@ -1,16 +1,16 @@
-package ex2;
+package ex3;
 
+import ex2.HashTable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HashTableTest {
 
     @Test
     void put() {
-        HashTable hashTable = new HashTable();
+        ex2.HashTable hashTable = new ex2.HashTable();
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("0", 4));
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("1", 4));
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("2", 4));
@@ -73,7 +73,7 @@ class HashTableTest {
 
     @Test
     void get() {
-        HashTable hashTable = new HashTable();
+        ex2.HashTable hashTable = new ex2.HashTable();
         //2.1.8 Obtenir no col·lisiona, una taula vuida.
         assertNull(hashTable.get("0"));
 
@@ -104,7 +104,7 @@ class HashTableTest {
 
     @Test
     void drop() {
-        HashTable hashTable = new HashTable();
+        ex2.HashTable hashTable = new HashTable();
         hashTable.put("1", "Perro");
         hashTable.put("12", "Dalmata");
         hashTable.put("23", "Turco Andaluz");

@@ -1,4 +1,4 @@
-package ex2;
+package ex4;
 
 // Original source code: https://gist.github.com/amadamala/3cdd53cb5a6b1c1df540981ab0245479
 // Modified by Fernando Porrino Serrano for academic purposes.
@@ -50,24 +50,23 @@ public class HashTable {
 
         if (entries[hash] == null) {
             entries[hash] = hashEntry;
-            // Sumamos un item para que despues podamos tener los items que hay.
+            // Sumamos un item para que despues podamos tener los items que hay
             ITEMS++;
         } else {
             HashEntry temp = entries[hash];
-            // Este es el ejecicio 2.1 la parte de actualizar el primero.
+            // Este es el ejecicio 2.1 la parte de actualizar el primero
             if (temp.key.equals(key)) {
                 entries[hash].value = hashEntry.value;
             } else {
                 while (temp.next != null) {
                     temp = temp.next;
-                    // Este es el ejecicio 2.1 la parte de actualizar los del medio y el del final.
+                    // Este es el ejecicio 2.1 la parte de actualizar los del medio y el del final
                     if (temp.key.equals(key)) {
                         temp.value = hashEntry.value;
                         actualizado = true;
                     }
                 }
-
-                // Con este else contamos las veces que colisionan.
+                // Con este else contamos las veces que colisionan
                 if (!actualizado) {
                     ITEMS++;
                     temp.next = hashEntry;
@@ -137,8 +136,6 @@ public class HashTable {
         //Modificado
         if (entries[hash] != null) {
             HashEntry temp = entries[hash];
-
-            //Recorre hasta pillar el key que quieres borrar
             while (!temp.key.equals(key)) {
                 if (temp.next != null) {
                     temp = temp.next;
@@ -148,25 +145,18 @@ public class HashTable {
                 }
             }
             if (temp != null) {
-                //Este if y el siguiente son para cuando temp no tiene colisiones.
                 if (temp.prev == null) {
                     if (temp.next == null) {
                         entries[hash] = null;
-                    }
-                    //Este else es para borrar el primero de las colisiones
-                    else {
+                    } else {
                         temp.next.prev = null;
                         entries[hash] = temp.next;
                     }
-                }
-                //Este if es para borrar el temp que tiene previo y siguiente
-                else {
+                } else {
                     if (temp.next != null) {
                         temp.next.prev = temp.prev;
                         temp.prev.next = temp.next;
-                    }
-                    //Este else es para borrar el ultimo.
-                    else {
+                    } else {
                         temp.prev.next = null;
                     }
                 }
@@ -175,32 +165,10 @@ public class HashTable {
         }
     }
 
-
     private int getHash(String key) {
         // piggy backing on java string
         // hashcode implementation.
         return key.hashCode() % SIZE;
-    }
-
-    private class HashEntry {
-        String key;
-        String value;
-
-        // Linked list of same hash entries.
-        HashEntry next;
-        HashEntry prev;
-
-        public HashEntry(String key, String value) {
-            this.key = key;
-            this.value = value;
-            this.next = null;
-            this.prev = null;
-        }
-
-        @Override
-        public String toString() {
-            return "[" + key + ", " + value + "]";
-        }
     }
 
     @Override
@@ -234,8 +202,8 @@ public class HashTable {
      * @param key La clau que es farà servir per calcular col·lisions.
      * @return Una clau que, de fer-se servir, provoca col·lisió amb la que s'ha donat.
      */
-    public String getCollisionsForKey(String key) {
-        return getCollisionsForKey(key, 1).get(0);
+    public ArrayList<String> getCollisionsForKey(String key) {
+        return getCollisionsForKey(key, 1);
     }
 
     /**
@@ -305,22 +273,7 @@ public class HashTable {
         return foundKeys;
     }
 
-    public static void main(String[] args) {
-        HashTable hashTable = new HashTable();
-
-        // Put some key values.
-        for (int i = 0; i < 250; i++) {
-            final String key = String.valueOf(i);
-            hashTable.put(key, key);
-        }
-
-        // Print the HashTable structure
-        log("****   HashTable  ***");
-        log(hashTable.toString());
-        log("\nValue for key(20) : " + hashTable.get("20"));
-    }
-
-    private static void log(String msg) {
+    public static void log(String msg) {
         System.out.println(msg);
     }
 }
