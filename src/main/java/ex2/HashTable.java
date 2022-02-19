@@ -31,7 +31,8 @@ public class HashTable {
         int hash = getHash(key);
         final HashEntry hashEntry = new HashEntry(key, value);
 
-        if(entries[hash] == null) {
+        // Original
+        /*if(entries[hash] == null) {
             entries[hash] = hashEntry;
         }
         else {
@@ -41,6 +42,63 @@ public class HashTable {
 
             temp.next = hashEntry;
             hashEntry.prev = temp;
+        }*/
+
+        // Modificado
+        /*if(entries[hash] == null) {
+            entries[hash] = hashEntry;
+            // Sumamos un item para que despues podamos tener los items que hay
+            ITEMS++;
+        }
+        else {
+            HashEntry temp = entries[hash];
+            // Este es el ejecicio 2.1 la parte de actualizar el primero
+            if (entries[hash].key.equals(hashEntry.key)){
+                entries[hash].value = hashEntry.value;
+            }else{
+                while(temp.next != null){
+                    temp = temp.next;
+                }
+                // Este es el ejecicio 2.1 la parte de actualizar los del medio y el del final
+                if (temp.key.equals(hashEntry.key)){
+                    temp.value = hashEntry.value;
+                }
+                // Con este else contamos las veces que colisionan
+                else {
+                    ITEMS++;
+                    temp.next = hashEntry;
+                    hashEntry.prev = temp;
+                }
+            }
+        }*/
+        if(entries[hash] == null) {
+            entries[hash] = hashEntry;
+
+            ITEMS++; //Count Alan
+
+        }
+        else {
+            HashEntry temp = entries[hash];
+            if (entries[hash].key.equals(hashEntry.key)){ //Updateamos en primera posicion ALAN
+                entries[hash].value = hashEntry.value;
+            }else{
+
+                while(temp.next != null) temp = temp.next;
+
+                if (temp.key.equals(hashEntry.key)){ //Updateamos en cualquier posicion que no sea la primera posicion ALAN
+                    temp.value = hashEntry.value;
+                }else {
+                    ITEMS++; //Count si hay collision Alan
+
+                    temp.next = hashEntry;
+                    hashEntry.prev = temp;
+
+                }
+
+
+
+            }
+
         }
     }
 
