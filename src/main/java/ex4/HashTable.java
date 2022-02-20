@@ -28,7 +28,7 @@ public class HashTable {
      * @param key   La clau de l'element a afegir.
      * @param value El propi element que es vol afegir.
      */
-    public void put(String key, String value) {
+    public void put(String key, Object value) {
         int hash = getHash(key);
         final HashEntry hashEntry = new HashEntry(key, value);
 
@@ -82,7 +82,9 @@ public class HashTable {
      * @param key La clau de l'element a trobar.
      * @return El propi element que es busca (null si no s'ha trobat).
      */
-    public String get(String key) {
+    /* Original
+    public String get(String key) {*/
+    public Object get(String key) {
         int hash = getHash(key);
 
         //Original

@@ -10,7 +10,7 @@ class HashTableTest {
 
     @Test
     void put() {
-        HashTable hashTable = new ex2.HashTable();
+        ex4.HashTable hashTable = new ex4.HashTable();
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("0", 4));
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("1", 4));
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("2", 4));
@@ -23,41 +23,41 @@ class HashTableTest {
         assertEquals(16, hashTable.size());
 
         //2.1.2 Inserir no col·lisiona, una taula no vuida
-        hashTable.put("9", "Cocodrilo");
+        hashTable.put("9", 5);
         assertEquals("\n" +
                 " bucket[1] = [1, Perro]\n" +
-                " bucket[9] = [9, Cocodrilo]", hashTable.toString());
+                " bucket[9] = [9, 5]", hashTable.toString());
         assertEquals(2, hashTable.count());
         assertEquals(16, hashTable.size());
 
         //2.1.3 Inserir col·lisiona, una taula no vuida, col·locarà en 2a posició
-        hashTable.put("12", "Dalmata");
+        hashTable.put("12", true);
         assertEquals("\n" +
-                " bucket[1] = [1, Perro] -> [12, Dalmata]\n" +
-                " bucket[9] = [9, Cocodrilo]", hashTable.toString());
+                " bucket[1] = [1, Perro] -> [12, true]\n" +
+                " bucket[9] = [9, 5]", hashTable.toString());
         assertEquals(3, hashTable.count());
         assertEquals(16, hashTable.size());
 
         //2.1.4 Inserir col·lisiona, una taula no vuida, col·locarà en 3a posició
-        hashTable.put("23", "Turco Andaluz");
+        hashTable.put("23", 5.5f);
         assertEquals("\n" +
-                " bucket[1] = [1, Perro] -> [12, Dalmata] -> [23, Turco Andaluz]\n" +
-                " bucket[9] = [9, Cocodrilo]", hashTable.toString());
+                " bucket[1] = [1, Perro] -> [12, true] -> [23, 5.5]\n" +
+                " bucket[9] = [9, 5]", hashTable.toString());
         assertEquals(4, hashTable.count());
         assertEquals(16, hashTable.size());
 
         //2.1.5 Inserir ja existeix, no col·lisiona, una taula no vuida.
         hashTable.put("9", "Gato");
         assertEquals("\n" +
-                " bucket[1] = [1, Perro] -> [12, Dalmata] -> [23, Turco Andaluz]\n" +
+                " bucket[1] = [1, Perro] -> [12, true] -> [23, 5.5]\n" +
                 " bucket[9] = [9, Gato]", hashTable.toString());
         assertEquals(4, hashTable.count());
         assertEquals(16, hashTable.size());
 
         //2.1.6 Inserir ja existeix, si col·lisiona, 2a posició, una taula no vuida.
-        hashTable.put("12", "Pastor Aleman");
+        hashTable.put("12", 'A');
         assertEquals("\n" +
-                " bucket[1] = [1, Perro] -> [12, Pastor Aleman] -> [23, Turco Andaluz]\n" +
+                " bucket[1] = [1, Perro] -> [12, A] -> [23, 5.5]\n" +
                 " bucket[9] = [9, Gato]", hashTable.toString());
         assertEquals(4, hashTable.count());
         assertEquals(16, hashTable.size());
@@ -65,7 +65,7 @@ class HashTableTest {
         //2.1.7 Inserir ja existeix, si col·lisiona, 3a posició, una taula no vuida.
         hashTable.put("23", "Bulldog Frances");
         assertEquals("\n" +
-                " bucket[1] = [1, Perro] -> [12, Pastor Aleman] -> [23, Bulldog Frances]\n" +
+                " bucket[1] = [1, Perro] -> [12, A] -> [23, Bulldog Frances]\n" +
                 " bucket[9] = [9, Gato]", hashTable.toString());
         assertEquals(4, hashTable.count());
         assertEquals(16, hashTable.size());
@@ -73,7 +73,7 @@ class HashTableTest {
 
     @Test
     void get() {
-        HashTable hashTable = new ex2.HashTable();
+        ex4.HashTable hashTable = new ex4.HashTable();
         //2.1.8 Obtenir no col·lisiona, una taula vuida.
         assertNull(hashTable.get("0"));
 
@@ -82,22 +82,22 @@ class HashTableTest {
         assertEquals("Perro", hashTable.get("1"));
 
         //2.1.10 Obtenir col·lisiona, una taula, 2a posició mateix bucket
-        hashTable.put("12", "Dalmata");
-        assertEquals("Dalmata", hashTable.get("12"));
+        hashTable.put("12", 5);
+        assertEquals(5, hashTable.get("12"));
 
         //2.1.11 Obtenir col·lisiona, una taula, 3a posició mateix bucket
-        hashTable.put("23", "Turco Andaluz");
-        assertEquals("Turco Andaluz", hashTable.get("23"));
+        hashTable.put("23", 'A');
+        assertEquals('A', hashTable.get("23"));
 
         //2.1.12 Obtenir no existe, posicion buida
         Assertions.assertNull(hashTable.get("9"));
 
         //2.1.13 Obtenir no existe, posicio ocupada, altre no col·lisiona.
-        hashTable.put("2", "Gato");
+        hashTable.put("2", 5.5f);
         assertNull(hashTable.get("13"));
 
         //2.1.14 Obtenir no existe, posicio ocupada, 3 altres col·lisiona.
-        hashTable.put("13", "Persa");
+        hashTable.put("13", true);
         hashTable.put("24", "Esfinge");
         assertNull(hashTable.get("35"));
     }
@@ -106,16 +106,16 @@ class HashTableTest {
     void drop() {
         ex4.HashTable hashTable = new ex4.HashTable();
         hashTable.put("1", "Perro");
-        hashTable.put("12", "Dalmata");
-        hashTable.put("23", "Turco Andaluz");
-        hashTable.put("9", "Cocodrilo");
+        hashTable.put("12", 'A');
+        hashTable.put("23", 5);
+        hashTable.put("9", 5.5f);
         assertEquals(16, hashTable.size());
 
         //2.1.15 Esborrar no col·lisiona.
         hashTable.drop("9");
         assertNull(hashTable.get("9"));
         assertEquals("\n" +
-                " bucket[1] = [1, Perro] -> [12, Dalmata] -> [23, Turco Andaluz]", hashTable.toString());
+                " bucket[1] = [1, Perro] -> [12, A] -> [23, 5]", hashTable.toString());
         assertEquals(3, hashTable.count());
         assertEquals(16, hashTable.size());
 
@@ -124,7 +124,7 @@ class HashTableTest {
         hashTable.drop("1");
         assertNull(hashTable.get("1"));
         assertEquals("\n" +
-                " bucket[1] = [12, Dalmata] -> [23, Turco Andaluz]\n" +
+                " bucket[1] = [12, A] -> [23, 5]\n" +
                 " bucket[9] = [9, Cocodrilo]", hashTable.toString());
         assertEquals(3, hashTable.count());
         assertEquals(16, hashTable.size());
@@ -134,17 +134,17 @@ class HashTableTest {
         hashTable.drop("12");
         assertNull(hashTable.get("12"));
         assertEquals("\n" +
-                " bucket[1] = [23, Turco Andaluz] -> [1, Perro]\n" +
+                " bucket[1] = [23, 5] -> [1, Perro]\n" +
                 " bucket[9] = [9, Cocodrilo]", hashTable.toString());
         assertEquals(3, hashTable.count());
         assertEquals(16, hashTable.size());
 
         //2.1.18 Esborrar si col·lisiona, 3a posició mateix bucket.
-        hashTable.put("12", "Dalmata");
+        hashTable.put("12", true);
         hashTable.drop("12");
         assertNull(hashTable.get("12"));
         assertEquals("\n" +
-                " bucket[1] = [23, Turco Andaluz] -> [1, Perro]\n" +
+                " bucket[1] = [23, 5] -> [1, Perro]\n" +
                 " bucket[9] = [9, Cocodrilo]", hashTable.toString());
         assertEquals(3, hashTable.count());
         assertEquals(16, hashTable.size());
@@ -154,7 +154,7 @@ class HashTableTest {
         hashTable.drop("3");
         assertNull(hashTable.get("3"));
         assertEquals("\n" +
-                " bucket[1] = [23, Turco Andaluz] -> [1, Perro] -> [12, Dalmata]\n" +
+                " bucket[1] = [23, 5] -> [1, Perro] -> [12, Dalmata]\n" +
                 " bucket[9] = [9, Cocodrilo]", hashTable.toString());
         assertEquals(4, hashTable.count());
         assertEquals(16, hashTable.size());
