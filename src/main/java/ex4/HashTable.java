@@ -136,6 +136,8 @@ public class HashTable {
         //Modificado
         if (entries[hash] != null) {
             HashEntry temp = entries[hash];
+
+            //Recorre hasta pillar el key que quieres borrar
             while (!temp.key.equals(key)) {
                 if (temp.next != null) {
                     temp = temp.next;
@@ -145,18 +147,25 @@ public class HashTable {
                 }
             }
             if (temp != null) {
+                //Este if y el siguiente son para cuando temp no tiene colisiones.
                 if (temp.prev == null) {
                     if (temp.next == null) {
                         entries[hash] = null;
-                    } else {
+                    }
+                    //Este else es para borrar el primero de las colisiones
+                    else {
                         temp.next.prev = null;
                         entries[hash] = temp.next;
                     }
-                } else {
+                }
+                //Este if es para borrar el temp que tiene previo y siguiente
+                else {
                     if (temp.next != null) {
                         temp.next.prev = temp.prev;
                         temp.prev.next = temp.next;
-                    } else {
+                    }
+                    //Este else es para borrar el ultimo.
+                    else {
                         temp.prev.next = null;
                     }
                 }
