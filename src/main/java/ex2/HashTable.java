@@ -3,6 +3,7 @@ package ex2;
 // Original source code: https://gist.github.com/amadamala/3cdd53cb5a6b1c1df540981ab0245479
 // Modified by Fernando Porrino Serrano for academic purposes.
 
+
 import java.util.ArrayList;
 
 /**
@@ -156,14 +157,13 @@ public class HashTable {
                     //Este else es para borrar el primero de las colisiones
                     else {
                         temp.next.prev = null;
-                        entries[hash] = temp.next;
+                        temp.next = entries[hash];
                     }
-                }
-                //Este if es para borrar el temp que tiene previo y siguiente
-                else {
+                } else {
+                    //Este if es para borrar el temp que tiene previo y siguiente
                     if (temp.next != null) {
-                        temp.next.prev = temp.prev;
-                        temp.prev.next = temp.next;
+                        temp.prev = temp.next.prev;
+                        temp.next = temp.prev.next;
                     }
                     //Este else es para borrar el ultimo.
                     else {
