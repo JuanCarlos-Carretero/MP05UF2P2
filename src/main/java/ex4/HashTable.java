@@ -66,7 +66,7 @@ public class HashTable {
                         actualizado = true;
                     }
                 }
-                // Con este else contamos las veces que colisionan
+                // Con este else añadimos una nueva colision si no se a actualizado y añadimos uno mas a items.
                 if (!actualizado) {
                     ITEMS++;
                     temp.next = hashEntry;
@@ -84,6 +84,7 @@ public class HashTable {
      */
     /* Original
     public String get(String key) {*/
+    //Modificado
     public Object get(String key) {
         int hash = getHash(key);
 

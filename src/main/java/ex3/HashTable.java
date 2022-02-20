@@ -60,13 +60,13 @@ public class HashTable {
             } else {
                 while (temp.next != null) {
                     temp = temp.next;
-                    // Este es el ejecicio 2.1 la parte de actualizar los del medio y el del final
+                    // Este es el ejecicio 2.1 la parte de actualizar los del medio y el del final.
                     if (temp.key.equals(key)) {
                         temp.value = hashEntry.value;
                         actualizado = true;
                     }
                 }
-                // Con este else contamos las veces que colisionan
+                // Con este else añadimos una nueva colision si no se a actualizado y añadimos uno mas a items.
                 if (!actualizado) {
                     ITEMS++;
                     temp.next = hashEntry;
