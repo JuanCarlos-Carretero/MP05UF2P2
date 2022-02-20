@@ -10,7 +10,7 @@ class HashTableTest {
 
     @Test
     void put() {
-        ex2.HashTable hashTable = new ex2.HashTable();
+        ex3.HashTable hashTable = new ex3.HashTable();
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("0", 4));
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("1", 4));
         System.out.println("Colisiona " + hashTable.getCollisionsForKey("2", 4));
@@ -73,7 +73,7 @@ class HashTableTest {
 
     @Test
     void get() {
-        ex2.HashTable hashTable = new ex2.HashTable();
+        ex3.HashTable hashTable = new ex3.HashTable();
         //2.1.8 Obtenir no col·lisiona, una taula vuida.
         assertNull(hashTable.get("0"));
 
@@ -104,7 +104,7 @@ class HashTableTest {
 
     @Test
     void drop() {
-        ex2.HashTable hashTable = new HashTable();
+        ex3.HashTable hashTable = new ex3.HashTable();
         hashTable.put("1", "Perro");
         hashTable.put("12", "Dalmata");
         hashTable.put("23", "Turco Andaluz");

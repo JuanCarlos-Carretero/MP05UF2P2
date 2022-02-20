@@ -155,13 +155,13 @@ public class HashTable {
                     //Este else es para borrar el primero de las colisiones
                     else {
                         temp.next.prev = null;
-                        temp.next = entries[hash];
+                        entries[hash] = temp.next;
                     }
                 } else {
                     //Este if es para borrar el temp que tiene previo y siguiente
                     if (temp.next != null) {
-                        temp.prev = temp.next.prev;
-                        temp.next = temp.prev.next;
+                        temp.next.prev = temp.prev;
+                        temp.prev.next = temp.next;
                     }
                     //Este else es para borrar el ultimo.
                     else {
